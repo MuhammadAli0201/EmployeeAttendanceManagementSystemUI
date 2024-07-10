@@ -1,0 +1,56 @@
+<nz-flex [nzVertical]="true" class="h-100" nzJustify="center">
+    <nz-flex class="all-employees-parent m-4" [nzVertical]="true">
+        <nz-flex class="ml-5 mr-5" nzAlign="end" nzJustify="space-between">
+            <h1>Report</h1>
+            <nz-flex nzAlign="end">
+                <form nz-row nz-form [formGroup]="reportSearchForm">
+                    <nz-form-item class="ml-2">
+                        <nz-form-control nzErrorTip="Required">
+                            <label>Start Date</label>
+                            <input nz-input type="date" [max]="date | date: 'yyyy-MM-dd'" formControlName="filterStartDate">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item class="ml-2">
+                        <nz-form-control nzErrorTip="Required.">
+                            <label>End Date</label>
+                            <input nz-input type="date" [max]="date | date: 'yyyy-MM-dd'" formControlName="filterEndDate">
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item class="ml-2">
+                        <nz-form-control nzErrorTip="Required.">
+                            <label>Department</label>
+                            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select Department"
+                                formControlName="department">
+                                <nz-option *ngFor="let dept of departmentOptions" [nzLabel]="dept.label"
+                                    [nzValue]="dept.value"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-flex nzAlign="center">
+                        <button nz-button nzType="primary" class="ml-2" (click)="SearchForReport()">Search</button>
+                    </nz-flex>
+                </form>
+            </nz-flex>
+        </nz-flex>
+        <nz-table class="mt-5 ml-5 mr-5" #basicTable [nzData]="attendence">
+            <thead>
+                <tr class="date-filter-table-headings">
+                    <th>Id</th>
+                    <th>Employee Name</th>
+                    <th>Date</th>
+                    <th>Check-In Time</th>
+                    <th>Check-Out Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data; index as i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ data.employee?.name }}</td>
+                    <td>{{ formatedDate(data.date!) }}</td>
+                    <td>{{data.checkInTime != null ? formatedTime(data.checkInTime ) :"Not Checked In" }}</td>
+                    <td>{{ data.checkOutTime != null ? formatedTime(data.checkOutTime ) : "Not Checked Out" }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </nz-flex>
+</nz-flex>

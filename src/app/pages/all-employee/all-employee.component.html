@@ -1,0 +1,39 @@
+<nz-flex [nzVertical]="true" class="h-100" nzJustify="center">
+  <nz-flex class="all-employees-parent m-4" [nzVertical]="true">
+    <nz-flex class="ml-5 mr-5" nzAlign="end" nzJustify="space-between">
+      <h1>Employee List</h1>
+      <div>
+        <button class="ml-2" nz-button nzType="primary" (click)="navToAttendenceDashboard()">Attendance
+          Dashboard</button>
+        <button class="ml-2" nz-button nzType="primary" (click)="navToCheckInOut()">Check-In/Out</button>
+        <button class="ml-2" nz-button nzType="primary" (click)="navToAttendanceReport()">Attendance Report</button>
+        <button class="ml-2" nz-button nzType="primary" (click)="navToAddOrUpdate('')">Add Employee</button>
+      </div>
+    </nz-flex>
+    <nz-table class="mt-5 ml-5 mr-5" #basicTable [nzData]="employees">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ getDepartment(data.department) }}</td>
+          <td>{{ data.email }}</td>
+          <td>
+            <button nz-button nzType="primary" (click)="navToAddOrUpdate(data.id)">Edit</button>
+            <button class="ml-2" nz-button nzType="primary" nz-popconfirm
+              nzPopconfirmTitle="Are you sure delete this task?" (nzOnConfirm)="deleteEmployee(data.id)"
+              nzPopconfirmPlacement="topCenter" nz-button nzDanger>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-flex>
+</nz-flex>

@@ -1,0 +1,49 @@
+<nz-flex nzJustify="center" nzAlign="center" class="h-100">
+    <nz-flex class="employee-container" [nzVertical]="true">
+        <h1 class="d-flex justify-content-center">Add/Edit Employee</h1>
+        <form class="m-5" nz-form [formGroup]="employeeForm">
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please Enter a Id.">
+                    <nz-form-label>Id</nz-form-label>
+                    <input nz-input formControlName="id" placeholder="Enter Id.">
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="nameErrors">
+                    <nz-form-label>Name</nz-form-label>
+                    <input nz-input formControlName="name" placeholder="Enter Name">
+                </nz-form-control>
+                <ng-template #nameErrors let-control>
+                    @if(control.errors?.required){Please Enter Your Name.}
+                    @else if(control.errors?.minlength){Min Length Should be 2 Alphabets.}
+                    @else if(control.errors?.maxlength){Max Length Should be 50 Alphabets.}
+                </ng-template>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="emailErrors">
+                    <nz-form-label>Email</nz-form-label>
+                    <input nz-input formControlName="email" placeholder="Enter Email.">
+                    <ng-template #emailErrors let-control>
+                        @if(control.errors?.required){Please Enter Your Email.}
+                        @else if(control.errors?.email){Invalid Email Format.}
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please Select atleast one department.">
+                    <nz-form-label>Department</nz-form-label>
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select Department" formControlName="department">
+                        <nz-option *ngFor="let dept of departmentOptions" [nzLabel]="dept.label"
+                            [nzValue]="dept.value"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-flex nzJustify="end">
+                <div>
+                    <button nz-button (click)="navToAllEmployees()">Close</button>
+                    <button class="ml-2" nz-button nzType="primary" (click)="createOrUpdate()">Save Changes</button>
+                </div>
+            </nz-flex>
+        </form>
+    </nz-flex>
+</nz-flex>

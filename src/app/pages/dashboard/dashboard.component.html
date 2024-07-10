@@ -1,0 +1,27 @@
+<nz-flex [nzVertical]="true" class="h-100" nzJustify="center">
+    <nz-flex class="all-employees-parent m-4" [nzVertical]="true">
+        <nz-flex class="ml-5 mr-5" nzAlign="end" nzJustify="space-between">
+            <h1>Employee Attendence Dashboard</h1>
+            <div class="w-25"><input nz-input type="date" [value]="filterDate"
+                    (change)="getAttendenceByDateEvent($event)"></div>
+        </nz-flex>
+        <nz-table class="mt-5 ml-5 mr-5" #basicTable [nzData]="attendence">
+            <thead>
+                <tr class="date-filter-table-headings">
+                    <th>Id</th>
+                    <th>Employee Name</th>
+                    <th>Check-In Time</th>
+                    <th>Check-Out Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data; index as i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ data.employee?.name }}</td>
+                    <td>{{data.checkInTime != null ? formatedTime(data.checkInTime ) :"Not Checked In" }}</td>
+                    <td>{{ data.checkOutTime != null ? formatedTime(data.checkOutTime ) : "Not Checked Out" }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </nz-flex>
+</nz-flex>
