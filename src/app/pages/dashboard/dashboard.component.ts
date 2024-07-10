@@ -12,6 +12,7 @@ import { AttendanceService } from 'src/app/services/attendance.service';
 export class DashboardComponent implements OnInit {
   attendence: Attendence[] = [];
   filterDate: string = new Date().toISOString().slice(0, 10);
+  maxDate:Date=new Date();
 
   constructor(private attendenceService: AttendanceService, private message: NzMessageService) {
 

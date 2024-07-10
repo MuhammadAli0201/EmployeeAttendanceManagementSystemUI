@@ -1,26 +1,28 @@
 <nz-flex nzJustify="center" nzAlign="center" class="h-100">
     <nz-flex class="employee-container" [nzVertical]="true">
         <h1 class="d-flex justify-content-center">Employee Check In Out</h1>
-        <form class="m-5" nz-form [formGroup]="checkInOutForm">                        
+        <form class="m-5" nz-form [formGroup]="checkInOutForm">
             <nz-form-item>
                 <nz-form-control nzErrorTip="Please Select atleast one Employee">
                     <nz-form-label>Select Employee</nz-form-label>
-                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Employee." formControlName="employeeId" (ngModelChange)="getCurrentDateAttendenceByEmployeeId($event)">
-                        <nz-option *ngFor="let emp of employees" [nzLabel]="emp.name"
-                            [nzValue]="emp.id"></nz-option>
+                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Employee." formControlName="employeeId"
+                        (ngModelChange)="getCurrentDateAttendenceByEmployeeId($event)">
+                        <nz-option *ngFor="let emp of employees" [nzLabel]="emp.name" [nzValue]="emp.id"></nz-option>
                     </nz-select>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
                 <nz-form-control nzErrorTip="Please Enter Check In Or Check Out Time.">
                     <nz-form-label>Select Employee</nz-form-label>
-                    <input nz-input nzPlaceHolder="Select a Employee." formControlName="checkInOutTime">                       
+                    <input nz-input nzPlaceHolder="Select a Employee." formControlName="checkInOutTime">
                 </nz-form-control>
             </nz-form-item>
             <nz-flex nzJustify="end">
-                <button  nz-button (click)="navToAllEmployees()">Close</button>
-                <button class="ml-2" *ngIf="isCheckIn" nz-button nzType="primary" (click)="checkInOutEvent()">Check In</button>
-                <button class="ml-2" *ngIf="isCheckOut" nz-button nzType="primary"(click)="checkInOutEvent()">Check Out</button>
+                <button nz-button (click)="navToAllEmployees()">Close</button>
+                <button class="ml-2" *ngIf="isCheckIn && checkInOutForm.value.employeeId != ''" nz-button
+                    nzType="primary" (click)="checkInOutEvent()">Check In</button>
+                <button class="ml-2" *ngIf="isCheckOut && checkInOutForm.value.employeeId != ''" nz-button
+                    nzType="primary" (click)="checkInOutEvent()">Check Out</button>
             </nz-flex>
         </form>
     </nz-flex>

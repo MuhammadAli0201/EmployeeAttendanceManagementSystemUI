@@ -97,7 +97,7 @@ export class CheckInOutComponent implements OnInit {
       this.attendanceService.checkInOut(attendance).subscribe({
         next: (data) => {
           console.log(data);
-          this.checkInOutForm.patchValue({
+          this.checkInOutForm.reset({
             id: DEFAULTVALUES.EmptyGuid,
             employeeId: "",
             checkInOutTime: new Date().toLocaleTimeString()

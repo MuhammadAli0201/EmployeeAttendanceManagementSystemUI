@@ -2,8 +2,9 @@
     <nz-flex class="all-employees-parent m-4" [nzVertical]="true">
         <nz-flex class="ml-5 mr-5" nzAlign="end" nzJustify="space-between">
             <h1>Employee Attendence Dashboard</h1>
-            <div class="w-25"><input nz-input type="date" [value]="filterDate"
-                    (change)="getAttendenceByDateEvent($event)"></div>
+            <div class="w-25">
+                <input nz-input type="date" [max]="maxDate | date: 'yyyy-MM-dd'" [value]="filterDate" (change)="getAttendenceByDateEvent($event)">
+            </div>
         </nz-flex>
         <nz-table class="mt-5 ml-5 mr-5" #basicTable [nzData]="attendence">
             <thead>
