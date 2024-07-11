@@ -4,5 +4,6 @@ export const PATHS = {
     createOrUpdateEmployee:'create-or-update-employee',
     dashboard:'dashboard',
     checkInOut:'check-in-out',
-    attendanceReport:'attendance-report'
+    attendanceReport:'attendance-report',
+    employeeCalanderView:'employee-calander-view'
 }

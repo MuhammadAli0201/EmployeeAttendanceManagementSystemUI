@@ -7,6 +7,7 @@ import { AllEmployeeComponent } from './pages/all-employee/all-employee.componen
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CheckInOutComponent } from './pages/check-in-out/check-in-out.component';
 import { AttendanceReportComponent } from './pages/attendance-report/attendance-report.component';
+import { EmployeeCalanderViewComponent } from './pages/employee-calander-view/employee-calander-view.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path:PATHS.createOrUpdateEmployee+"/:id",
         component:AddUpdateEmployeeComponent
+      },
+      {
+        path:PATHS.employeeCalanderView+"/:id",
+        component:EmployeeCalanderViewComponent
       }
     ]    
   },

@@ -29,8 +29,9 @@
           <td>
             <button nz-button nzType="primary" (click)="navToAddOrUpdate(data.id)">Edit</button>
             <button class="ml-2" nz-button nzType="primary" nz-popconfirm
-              nzPopconfirmTitle="Are you sure delete this task?" (nzOnConfirm)="deleteEmployee(data.id)"
-              nzPopconfirmPlacement="topCenter" nz-button nzDanger>Delete</button>
+            nzPopconfirmTitle="Are you sure delete this task?" (nzOnConfirm)="deleteEmployee(data.id)"
+            nzPopconfirmPlacement="topCenter" nz-button nzDanger>Delete</button>
+            <button class="bg-success ml-2" nz-button nzType="primary" (click)="navToCalenderView(data.id)">Calender View</button>
           </td>
         </tr>
       </tbody>

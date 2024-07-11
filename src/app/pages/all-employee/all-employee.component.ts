@@ -44,17 +44,16 @@ export class AllEmployeeComponent {
     return employees;
   }
 
-  deleteEmployee(id:string)
-  {
+  deleteEmployee(id: string) {
     this.employeeService.delete(id).subscribe({
       next: (data) => {
         this.message.success(`${data.name} Record deleted successfully`);
         this.getEmployees();
-        },
-        error: (error) => {
-          console.log(error);
-          this.message.error("Oops. Something went wrong.");
-          }
+      },
+      error: (error) => {
+        console.log(error);
+        this.message.error("Oops. Something went wrong.");
+      }
     });
   }
 
@@ -62,13 +61,20 @@ export class AllEmployeeComponent {
   navToAddOrUpdate(id: string) {
     this.router.navigate([PATHS.allEmployees, PATHS.createOrUpdateEmployee, id]);
   }
+
   navToCheckInOut() {
     this.router.navigate([PATHS.checkInOut]);
   }
+
   navToAttendenceDashboard() {
     this.router.navigate([PATHS.dashboard]);
   }
+
   navToAttendanceReport() {
     this.router.navigate([PATHS.attendanceReport]);
+  }
+
+  navToCalenderView(id: string) {
+    this.router.navigate([PATHS.allEmployees, PATHS.employeeCalanderView,id]);
   }
 }

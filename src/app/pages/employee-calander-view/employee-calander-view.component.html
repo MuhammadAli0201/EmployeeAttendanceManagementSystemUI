@@ -1,0 +1,15 @@
+<nz-flex class="employee-calender-view-container">
+    <nz-calendar (nzSelectChange)="showDate($event)">
+        <nz-flex class="events" *nzDateCell="let date" [nzVertical]="true" nzAlign="start" nzJustify="end">
+            @if(getAttendanceAgainstDate(date); as attendance)
+            {
+            <p>
+                <span class="text-primary">Check-In: </span> <span>{{formatedTime(attendance.checkInTime!)}}</span>
+            </p>
+            <p>
+                <span class="text-danger">Check-Out: </span> <span>{{formatedTime(attendance.checkOutTime!)}}</span>
+            </p>
+            }
+        </nz-flex>
+    </nz-calendar>
+</nz-flex>

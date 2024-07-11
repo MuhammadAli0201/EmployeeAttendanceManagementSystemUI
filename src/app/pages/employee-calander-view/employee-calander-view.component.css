@@ -1,0 +1,13 @@
+.events
+{
+    font-size: 12px;
+}
+
+.employee-calender-view-container
+{
+    height: 90vh;
+    margin: 40px 40px 0px 40px;
+    padding: 10px;
+    box-shadow: 1px 1px 3px 3px rgb(200, 200, 200);
+    overflow: auto;
+}

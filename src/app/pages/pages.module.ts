@@ -18,6 +18,9 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CheckInOutComponent } from './check-in-out/check-in-out.component';
 import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
+import { EmployeeCalanderViewComponent } from './employee-calander-view/employee-calander-view.component';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { AttendanceReportComponent } from './attendance-report/attendance-report
   AllEmployeeComponent,
   DashboardComponent,
   CheckInOutComponent,
-  AttendanceReportComponent
+  AttendanceReportComponent,
+  EmployeeCalanderViewComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,9 @@ import { AttendanceReportComponent } from './attendance-report/attendance-report
     NzSelectModule,
     RouterModule,
     NzPopconfirmModule,
-    FormsModule
+    FormsModule,
+    NzCalendarModule,
+    NzBadgeModule
 ]
 })
 export class PagesModule { }

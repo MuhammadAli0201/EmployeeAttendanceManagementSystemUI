@@ -25,6 +25,10 @@ export class AttendanceService {
     return this.http.get<Attendence>(this._url + `GetCurrentDateAttendenceByEmployeeId?id=${id}`);
   }
   
+  getByEmployeeIdMonthAndYear(id: string,month:number,year:number): Observable<Attendence[]> {
+    return this.http.get<Attendence[]>(this._url + `GetByEmployeeIdMonthAndYear?id=${id}&month=${month}&year=${year}`);
+  }
+  
   getReport(startDate:string,endDate:string,dept:number): Observable<Attendence[]> {
     return this.http.get<Attendence[]>(this._url + `Report?startDate=${startDate}&endDate=${endDate}&department=${dept}`);
   }
